@@ -1,0 +1,170 @@
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Name a rdfs:Class .
+
+ex:StudentCourse a rdfs:Class .
+
+vivo:Course a rdfs:Class .
+
+vivo:Student a rdfs:Class .
+
+ex:40261722 a ex:StudentCourses,
+        vivo:Student ;
+    ex:completed_courses ex:40261722courses ;
+    ex:email "cb@gmail.com" ;
+    ex:student_id "40261722" ;
+    ex:student_name ex:GaneshCB .
+
+ex:40261725 a ex:StudentCourses,
+        vivo:Student ;
+    ex:completed_courses ex:40261725courses ;
+    ex:email "h.g@gmail.com" ;
+    ex:student_id "40261725" ;
+    ex:student_name ex:Harigs .
+
+ex:competencies a rdf:Property ;
+    rdfs:label "completed courses" ;
+    rdfs:comment "completed courses of the student" ;
+    rdfs:domain vivo:Student ;
+    rdfs:range rdf:Bag .
+
+ex:completed_courses a rdf:Property ;
+    rdfs:label "completed courses" ;
+    rdfs:comment "completed courses of the student" ;
+    rdfs:domain vivo:Student ;
+    rdfs:range ex:StudentCourses .
+
+ex:course a rdf:Property ;
+    rdfs:label "Course Details" ;
+    rdfs:comment "Course Object" ;
+    rdfs:domain ex:StudentCourse ;
+    rdfs:range vivo:Course .
+
+ex:course_description a rdf:Property ;
+    rdfs:label "course description" ;
+    rdfs:comment "a brief description about the course" ;
+    rdfs:domain vivo:Course ;
+    rdfs:range xsd:string .
+
+ex:course_name a rdf:Property ;
+    rdfs:label "course name" ;
+    rdfs:comment "Describes the course name of the course" ;
+    rdfs:domain vivo:Course ;
+    rdfs:range xsd:string .
+
+ex:course_number a rdf:Property ;
+    rdfs:label "course subject number" ;
+    rdfs:comment "Describes the subject number of the course" ;
+    rdfs:domain vivo:Course ;
+    rdfs:range xsd:integer .
+
+ex:course_outline a rdf:Property ;
+    rdfs:label "course outline" ;
+    rdfs:comment "a brief description about the outline of the course" ;
+    rdfs:domain vivo:Course ;
+    rdfs:range xsd:string .
+
+ex:course_subject a rdf:Property ;
+    rdfs:label "course subject code" ;
+    rdfs:comment "Describes the subject code of the course" ;
+    rdfs:domain vivo:Course ;
+    rdfs:range xsd:string .
+
+ex:email a rdf:Property ;
+    rdfs:label "Student Email" ;
+    rdfs:comment "Email of the student" ;
+    rdfs:domain vivo:Student ;
+    rdfs:range xsd:string .
+
+ex:firstName a rdf:Property ;
+    rdfs:label "first name" ;
+    rdfs:comment "first name of the student" ;
+    rdfs:domain ex:Name ;
+    rdfs:range xsd:string .
+
+ex:grade a rdf:Property ;
+    rdfs:label "Grade" ;
+    rdfs:comment "Grade" ;
+    rdfs:domain ex:StudentCourse ;
+    rdfs:range xsd:string .
+
+ex:has_credits a rdf:Property ;
+    rdfs:label "course credits" ;
+    rdfs:comment "Describes the total credits of the course" ;
+    rdfs:domain vivo:Course ;
+    rdfs:range xsd:integer .
+
+ex:lastName a rdf:Property ;
+    rdfs:label "last name" ;
+    rdfs:comment "last name of the student" ;
+    rdfs:domain ex:Name ;
+    rdfs:range xsd:string .
+
+ex:retakeCourse a rdf:Property ;
+    rdfs:label "Retake Course" ;
+    rdfs:comment "Retake Course" ;
+    rdfs:domain ex:StudentCourse ;
+    rdfs:range xsd:string .
+
+ex:student_id a rdf:Property ;
+    rdfs:label "Student ID" ;
+    rdfs:comment "ID of the student" ;
+    rdfs:domain vivo:Student ;
+    rdfs:range xsd:string .
+
+ex:student_name a rdf:Property ;
+    rdfs:label "Student Name" ;
+    rdfs:comment "Name of the student" ;
+    rdfs:domain vivo:Student ;
+    rdfs:range ex:Name .
+
+ex:40261722_6321 a ex:StudentCourse ;
+    ex:course ex:DSD ;
+    ex:grade "A+" ;
+    ex:retakeCourse "no" .
+
+ex:40261722_6744 a ex:StudentCourse ;
+    ex:course ex:Intelligent_Systems ;
+    ex:grade "A+" ;
+    ex:retakeCourse "no" .
+
+ex:40261722courses rdf:_1 ex:40261722_6744 ;
+    rdf:_2 ex:40261722_6321 .
+
+ex:40261725_6321 a ex:StudentCourse ;
+    ex:course ex:DSD ;
+    ex:grade "A+" ;
+    ex:retakeCourse "no" .
+
+ex:40261725_6744 a ex:StudentCourse ;
+    ex:course ex:Intelligent_Systems ;
+    ex:grade "A+" ;
+    ex:retakeCourse "no" .
+
+ex:40261725courses rdf:_1 ex:40261725_6744 ;
+    rdf:_2 ex:40261725_6321 .
+
+ex:GaneshCB ex:firstName "Ganesh" ;
+    ex:lastName "CB" .
+
+ex:Harigs ex:firstName "Hari" ;
+    ex:lastName "gs" .
+
+ex:DSD a vivo:Course ;
+    ex:course_name "DSD" ;
+    ex:course_number "6321" ;
+    ex:course_subject "COMP" ;
+    ex:has_credits "4" .
+
+ex:Intelligent_Systems a vivo:Course ;
+    ex:course_name "Intelligent_Systems" ;
+    ex:course_number "6744" ;
+    ex:course_subject "COMP" ;
+    ex:has_credits "4" .
+
+ex:StudentCourses a rdf:Bag .
+
