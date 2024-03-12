@@ -1,0 +1,52 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+
+ex:Name rdf:type rdfs:Class.
+
+ex:firstName rdf:type rdf:Property;
+    rdfs:domain ex:Name;
+    rdfs:range xsd:string;
+    rdfs:label "first name";
+    rdfs:comment "first name of the student".
+
+ex:lastName rdf:type rdf:Property;
+    rdfs:domain ex:Name;
+    rdfs:range xsd:string;
+    rdfs:label "last name";
+    rdfs:comment "last name of the student".
+
+vivo:Student rdf:type rdfs:Class.
+
+ex:student_name rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range ex:Name;
+    rdfs:label "Student Name";
+    rdfs:comment "Name of the student".
+
+ex:student_id rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range xsd:string;
+    rdfs:label "Student ID";
+    rdfs:comment "ID of the student".
+
+ex:email rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range xsd:string;
+    rdfs:label "Student Email";
+    rdfs:comment "Email of the student".
+
+ex:completed_courses rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range ex:StudentCourses;
+    rdfs:label "completed courses";
+    rdfs:comment "completed courses of the student".
+
+ex:competencies rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range rdf:Bag;
+    rdfs:label "completed courses";
+    rdfs:comment "completed courses of the student".
