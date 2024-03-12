@@ -1,0 +1,53 @@
+{
+    "courses":[
+        {
+        "cname":"Intelligent_Systems",
+        "subjectCode":"COMP",
+        "course_number":"6744",
+        "credits":"4",
+        "course_desc":"int sys is a course",
+        "label":"Intelligent Systems"
+        },
+        {
+            "cname":"DSD",
+            "subjectCode":"COMP",
+            "course_number":"6321",
+            "credits":"4",
+            "course_desc":"dsd is a course",
+            "label":"Dist sys Design"
+        }
+    ],
+    "students":[
+        {
+            "fname":"Hari",
+            "lname":"gs",
+            "id":"40261725",
+            "email":"h.g@gmail.com",
+            "completed_courses":[
+                {
+                    "code":"6744",
+                    "grade":"A+"
+                },
+                {
+                    "code":"6321",
+                    "grade":"A+"
+                }
+            ]
+        },{
+            "fname":"Ganesh",
+            "lname":"CB",
+            "id":"40261722",
+            "email":"cb@gmail.com",
+            "completed_courses":[
+                {
+                    "code":"6744",
+                    "grade":"A+"
+                },
+                {
+                    "code":"6321",
+                    "grade":"A+"
+                }
+            ]
+        }
+    ]
+}
