@@ -3,54 +3,61 @@
 @prefix vivo: <http://vivoweb.org/ontology/core#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/courses/> .
-@prefix ec: <http://example.org/lectures/> .
 
-ec:Lecture rdf:type rdfs:Class;
+ex:Belongs_to rdf:type rdf:Property;
+    rdfs:domain ex:Lecture;
+    rdfs:range ex:Course;
+    rdfs:label "Belongs_to";
+    rdfs:comment "property extension".
+
+ex:Lecture rdf:type rdfs:Class;
     rdfs:subClassOf vivo:Course;
     rdfs:label "Lecture";
     rdfs:comment "A class about Lecture and its contents" .
 
-ec:lecture_number rdf:type rdf:Property;
-    rdfs:domain ec:Lecture;
+ex:lecture_number rdf:type rdf:Property;
+    rdfs:domain ex:Lecture;
     rdfs:range xsd:interger;
     rdfs:label "Lecture Number";
     rdfs:comment "sequential count of lecture number".
 
-ec:lecture_name rdf:type rdf:Property;
-    rdfs:domain ec:Lecture;
+ex:lecture_name rdf:type rdf:Property;
+    rdfs:domain ex:Lecture;
     rdfs:range xsd:string;
     rdfs:label "Lecture Name";
     rdfs:comment "Name of the Lecture topics available in this course".
 
-ec:Lecture_Content rdf:type rdfs:Class;
+ex:Lecture_Content rdf:type rdfs:Class;
     rdfs:label "Lecture Content";
     rdfs:comment "Different types of lecture contents available".
 
-ec:Slides rdf:type rdfs:Class;
-    rdfs:subClassOf ec:Lecture_Content;
+ex:Slides rdf:type rdfs:Class;
+    rdfs:subClassOf ex:Lecture_Content;
     rdfs:label "Slides";
     rdfs:comment "Different types of slides used in the lecture".
 
-ec:Worksheets rdf:type rdfs:Class;
-    rdfs:subClassOf ec:Lecture_Content;
+ex:Worksheets rdf:type rdfs:Class;
+    rdfs:subClassOf ex:Lecture_Content;
     rdfs:label "Worksheets";
     rdfs:comment "Different types of Worksheets used in the lecture".
 
-ec:Readings rdf:type rdfs:Class;
-    rdfs:subClassOf ec:Lecture_Content;
+ex:Readings rdf:type rdfs:Class;
+    rdfs:subClassOf ex:Lecture_Content;
     rdfs:label "Readings";
     rdfs:comment "Different types of Readings required in the lecture".
 
-ec:Other_Material rdf:type rdfs:Class;
-    rdfs:subClassOf ec:Lecture_Content;
+ex:Other_Material rdf:type rdfs:Class;
+    rdfs:subClassOf ex:Lecture_Content;
     rdfs:label "Other Material";
     rdfs:comment "Other materials used in the lecture".
 
-ec:has_Content rdf:type rdf:Property;
-    rdfs:domain ec:Lecture;
-    rdfs:range ec:Lecture_Content;
+ex:has_Content rdf:type rdf:Property;
+    rdfs:domain ex:Lecture;
+    rdfs:range ex:Lecture_Content;
     rdfs:label "Has Content";
     rdfs:label "Course related contents".
+
+ex:Lecture rdfs:seeAlso "Add link here".
 
     
 
