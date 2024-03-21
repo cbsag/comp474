@@ -50,3 +50,11 @@ ex:competencies rdf:type rdf:Property;
     rdfs:range rdf:Bag;
     rdfs:label "completed courses";
     rdfs:comment "completed courses of the student".
+
+
+ex:studies_at rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range vivo:University;
+    rdfs:label "Studies At";
+    rdfs:comment "University student studies at".
+

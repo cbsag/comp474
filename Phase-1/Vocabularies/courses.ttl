@@ -44,6 +44,18 @@ ex:course_outline rdf:type rdf:Property;
     rdfs:label "course outline";
     rdfs:comment "a brief description about the outline of the course".
     
+ex:belongs_to rdf:type rdf:Property;
+    rdfs:domain vivo:Course;
+    rdfs:range vivo:University;
+    rdfs:label "belongs to";
+    rdfs:comment "uni that teaches the course".
+
+
+ex:program_level rdf:type rdf:Property;
+    rdfs:domain vivo:Course;
+    rdfs:range xsd:string;
+    rdfs:label "program level";
+    rdfs:comment "program level of the course".
 
 
 
