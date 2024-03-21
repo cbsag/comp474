@@ -2,68 +2,68 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/courses/> .
+@prefix Vocab: <http://example.org/Vocabulary/> .
 
-ex:belongs_to rdf:type rdf:Property;
-    rdfs:domain ex:Lecture;
-    rdfs:range ex:Course;
+Vocab:belongs_to rdf:type rdf:Property;
+    rdfs:domain Vocab:Lecture;
+    rdfs:range Vocab:Course;
     rdfs:label "Belongs_to";
     rdfs:comment "property extension".
 
-ex:Lecture rdf:type rdfs:Class;
+Vocab:Lecture rdf:type rdfs:Class;
     rdfs:subClassOf vivo:Course;
     rdfs:label "Lecture";
     rdfs:comment "A class about Lecture and its contents" .
 
-ex:lecture_number rdf:type rdf:Property;
-    rdfs:domain ex:Lecture;
+Vocab:lecture_number rdf:type rdf:Property;
+    rdfs:domain Vocab:Lecture;
     rdfs:range xsd:interger;
     rdfs:label "Lecture Number";
     rdfs:comment "sequential count of lecture number".
 
-ex:lecture_name rdf:type rdf:Property;
-    rdfs:domain ex:Lecture;
+Vocab:lecture_name rdf:type rdf:Property;
+    rdfs:domain Vocab:Lecture;
     rdfs:range xsd:string;
     rdfs:label "Lecture Name";
     rdfs:comment "Name of the Lecture topics available in this course".
 
-ex:Lecture_Content rdf:type rdfs:Class;
+Vocab:Lecture_Content rdf:type rdfs:Class;
     rdfs:label "Lecture Content";
     rdfs:comment "Different types of lecture contents available".
 
-ex:Slides rdf:type rdfs:Class;
-    rdfs:subClassOf ex:Lecture_Content;
+Vocab:Slides rdf:type rdfs:Class;
+    rdfs:subClassOf Vocab:Lecture_Content;
     rdfs:label "Slides";
     rdfs:comment "Different types of slides used in the lecture".
 
-ex:Worksheets rdf:type rdfs:Class;
-    rdfs:subClassOf ex:Lecture_Content;
+Vocab:Worksheets rdf:type rdfs:Class;
+    rdfs:subClassOf Vocab:Lecture_Content;
     rdfs:label "Worksheets";
     rdfs:comment "Different types of Worksheets used in the lecture".
 
-ex:Readings rdf:type rdfs:Class;
-    rdfs:subClassOf ex:Lecture_Content;
+Vocab:Readings rdf:type rdfs:Class;
+    rdfs:subClassOf Vocab:Lecture_Content;
     rdfs:label "Readings";
     rdfs:comment "Different types of Readings required in the lecture".
 
-ex:Other_Material rdf:type rdfs:Class;
-    rdfs:subClassOf ex:Lecture_Content;
+Vocab:Other_Material rdf:type rdfs:Class;
+    rdfs:subClassOf Vocab:Lecture_Content;
     rdfs:label "Other Material";
     rdfs:comment "Other materials used in the lecture".
 
 
-ex:Lab_Content rdf:type rdfs:Class;
-    rdfs:subClassOf ex:Lecture_Content;
+Vocab:Lab_Content rdf:type rdfs:Class;
+    rdfs:subClassOf Vocab:Lecture_Content;
     rdfs:label "lab content";
     rdfs:comment "lab content".
 
-ex:has_Content rdf:type rdf:Property;
-    rdfs:domain ex:Lecture;
-    rdfs:range ex:Lecture_Content;
+Vocab:has_Content rdf:type rdf:Property;
+    rdfs:domain Vocab:Lecture;
+    rdfs:range Vocab:Lecture_Content;
     rdfs:label "Has Content";
     rdfs:label "Course related contents".
 
-#ex:Lecture rdfs:seeAlso "Add link here".
+#Vocab:Lecture rdfs:seeAlso "Add link here".
 
     
 
