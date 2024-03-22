@@ -2,29 +2,27 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/> .
+@prefix Vocab: <http://example.org/Vocabulary/> .
 
-ex:StudentCourses rdf:type rdf:Bag.
-ex:StudentCourse rdf:type rdfs:Class.
+#Vocab:StudentCourses rdf:type rdf:Bag.
+Vocab:StudentCourse rdf:type rdfs:Class.
 
-ex:course rdf:type rdf:Property;
-    rdfs:domain ex:StudentCourse;
+Vocab:course rdf:type rdf:Property;
+    rdfs:domain Vocab:StudentCourse;
     rdfs:range vivo:Course;
     rdfs:label "Course Details";
     rdfs:comment "Course Object".
 
-ex:grade rdf:type rdf:Property;
-    rdfs:domain ex:StudentCourse;
+Vocab:grade rdf:type rdf:Property;
+    rdfs:domain Vocab:StudentCourse;
     rdfs:range xsd:string;
     rdfs:label "Grade";
     rdfs:comment "Grade".
 
 
 
-ex:retakeCourse rdf:type rdf:Property;
-    rdfs:domain ex:StudentCourse;
-    rdfs:range xsd:string;
+Vocab:retookCourse rdf:type rdf:Property;
+    rdfs:domain Vocab:StudentCourse;
+    rdfs:range xsd:boolean;
     rdfs:label "Retake Course";
     rdfs:comment "Retake Course".
-
-

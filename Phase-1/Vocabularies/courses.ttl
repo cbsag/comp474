@@ -2,48 +2,60 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/> .
+@prefix Vocab: <http://example.org/Vocabulary/> .
 
 
 vivo:Course rdf:type rdfs:Class.
 
-ex:course_name rdf:type rdf:Property;
+Vocab:course_name rdf:type rdf:Property;
     rdfs:domain vivo:Course;
     rdfs:range xsd:string;
     rdfs:label "course name";
     rdfs:comment "Describes the course name of the course".
 
-ex:course_subject rdf:type rdf:Property;
+Vocab:course_subject rdf:type rdf:Property;
     rdfs:domain vivo:Course;
     rdfs:range xsd:string;
     rdfs:label "course subject code";
     rdfs:comment "Describes the subject code of the course".
 
-ex:course_number rdf:type rdf:Property;
+Vocab:course_number rdf:type rdf:Property;
     rdfs:domain vivo:Course;
     rdfs:range xsd:integer;
     rdfs:label "course subject number";
     rdfs:comment "Describes the subject number of the course".
     
-ex:has_credits rdf:type rdf:Property;
+Vocab:has_credits rdf:type rdf:Property;
     rdfs:domain vivo:Course;
     rdfs:range xsd:integer;
     rdfs:label "course credits";
     rdfs:comment "Describes the total credits of the course".
 
-ex:course_description rdf:type rdf:Property;
+Vocab:course_description rdf:type rdf:Property;
     rdfs:domain vivo:Course;
     rdfs:range xsd:string;
     rdfs:label "course description";
     rdfs:comment "a brief description about the course".
 
 
-ex:course_outline rdf:type rdf:Property;
+Vocab:course_outline rdf:type rdf:Property;
     rdfs:domain vivo:Course;
     rdfs:range xsd:string;
     rdfs:label "course outline";
     rdfs:comment "a brief description about the outline of the course".
     
+Vocab:belongs_to rdf:type rdf:Property;
+    rdfs:domain vivo:Course;
+    rdfs:range vivo:University;
+    rdfs:label "belongs to";
+    rdfs:comment "uni that teaches the course".
+
+
+Vocab:program_level rdf:type rdf:Property;
+    rdfs:domain vivo:Course;
+    rdfs:range xsd:string;
+    rdfs:label "program level";
+    rdfs:comment "program level of the course".
 
 
 

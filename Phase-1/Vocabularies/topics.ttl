@@ -1,0 +1,55 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vivo:    <http://vivoweb.org/ontology/core#>.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix Vocab:      <http://example.org/Vocabulary/> .
+@prefix dbr:     <https://dbpedia.org/resource/> .
+@prefix wd:      <https://www.wikidata.org/wiki/> .
+
+Vocab:belongs_to rdf:type rdf:Property;
+    rdfs:domain Vocab:Topic;
+    rdfs:range vivo:Course;
+    rdfs:label "Belongs_to";
+    rdfs:comment "property extension".
+
+
+Vocab:Topic rdf:type rdfs:Class;
+    rdfs:label "Topic";
+    rdfs:comment "Information about the topics covered in a course".
+
+Vocab:topic_name rdf:type rdf:Property;
+    rdfs:domain Vocab:Topic;
+    rdfs:range rdf:Literal;
+    rdfs:label "Topic Name";
+    rdfs:comment "Name of the topic used in the lecture".
+
+Vocab:provenance rdf:type rdf:Property;
+    rdfs:domain Vocab:Topic;
+    rdfs:range rdf:Literal;
+    rdfs:label "Provenance";
+    rdfs:comment "Topic was identified as being covered in the course (e.g., calendar, course outline, specific lecture)".
+
+Vocab:linked_to rdf:type rdf:Property;
+    rdfs:domain Vocab:Topic;
+    rdfs:range rdf:Resource;
+    rdfs:label "Linked To";
+    rdfs:comment "Link to DBpedia and/or Wikidata for the topic".
+
+Vocab:dbpedia_Link rdf:type rdf:Property;
+    rdfs:subPropertyOf Vocab:linked_to;
+    rdfs:label "DBpedia Link";
+    rdfs:comment "Link to DBpedia for the topic".
+
+Vocab:wikidata_Link rdf:type rdf:Property;
+    rdfs:subPropertyOf Vocab:linked_to;
+    rdfs:label "Wikidata Link";
+    rdfs:comment "Link to Wikidata for the topic".
+
+
+Vocab:taught_in rdf:type rdf:Property;
+    rdfs:domain Vocab:Topic;
+    rdfs:range Vocab:Lecture;
+    rdfs:label "Taught in:";
+    rdfs:comment " the lecture it was cpvered in".
+
+

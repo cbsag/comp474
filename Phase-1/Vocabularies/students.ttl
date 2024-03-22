@@ -2,51 +2,59 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/> .
+@prefix Vocab: <http://example.org/Vocabulary/> .
 
 
-ex:Name rdf:type rdfs:Class.
+Vocab:Name rdf:type rdfs:Class.
 
-ex:firstName rdf:type rdf:Property;
-    rdfs:domain ex:Name;
+Vocab:firstName rdf:type rdf:Property;
+    rdfs:domain Vocab:Name;
     rdfs:range xsd:string;
     rdfs:label "first name";
     rdfs:comment "first name of the student".
 
-ex:lastName rdf:type rdf:Property;
-    rdfs:domain ex:Name;
+Vocab:lastName rdf:type rdf:Property;
+    rdfs:domain Vocab:Name;
     rdfs:range xsd:string;
     rdfs:label "last name";
     rdfs:comment "last name of the student".
 
 vivo:Student rdf:type rdfs:Class.
 
-ex:student_name rdf:type rdf:Property;
+Vocab:student_name rdf:type rdf:Property;
     rdfs:domain vivo:Student;
-    rdfs:range ex:Name;
+    rdfs:range Vocab:Name;
     rdfs:label "Student Name";
     rdfs:comment "Name of the student".
 
-ex:student_id rdf:type rdf:Property;
+Vocab:student_id rdf:type rdf:Property;
     rdfs:domain vivo:Student;
     rdfs:range xsd:string;
     rdfs:label "Student ID";
     rdfs:comment "ID of the student".
 
-ex:email rdf:type rdf:Property;
+Vocab:email rdf:type rdf:Property;
     rdfs:domain vivo:Student;
     rdfs:range xsd:string;
     rdfs:label "Student Email";
     rdfs:comment "Email of the student".
 
-ex:completed_courses rdf:type rdf:Property;
+Vocab:completed_courses rdf:type rdf:Property;
     rdfs:domain vivo:Student;
-    rdfs:range ex:StudentCourses;
+    rdfs:range Vocab:StudentCourse;
     rdfs:label "completed courses";
     rdfs:comment "completed courses of the student".
 
-ex:competencies rdf:type rdf:Property;
+Vocab:competencies rdf:type rdf:Property;
     rdfs:domain vivo:Student;
-    rdfs:range rdf:Bag;
+    rdfs:range Vocab:Topic;
     rdfs:label "completed courses";
     rdfs:comment "completed courses of the student".
+
+
+Vocab:studies_at rdf:type rdf:Property;
+    rdfs:domain vivo:Student;
+    rdfs:range vivo:University;
+    rdfs:label "Studies At";
+    rdfs:comment "University student studies at".
+
