@@ -1,0 +1,15 @@
+{
+    "1":"SELECT ?courses WHERE {{ ?uname ex:name '{}'. ?course ex:belongs_to ?uiversityname; ex:course_name ?courses.}}",
+    "2":"SELECT ?coursename WHERE {{?topic ex:topic_name '{}'. ?topic ex:belongs_to ?course.?course ex:course_name ?coursename}}",
+    "3":"SELECT ?topic WHERE {{ ?course ex:course_name '{}'. ?lecture ex:belongs_to ?course. ?lecture ex:lecture_number '{}'. ?topic ex:taught_in ?lecture. }}",
+    "4":"SELECT ?course WHERE {{ ?uname ex:name '{}'. ?course ex:belongs_to ?uname. ?course ex:course_subject ?subject. FILTER(?subject='{}'). }}",
+    "5":"SELECT DISTINCT ?x WHERE {{ ?s Vocab:course_number '{}'. ?topic Vocab:belongs_to ?s. ?topic Vocab:topic_name '{}'. ?topic Vocab:taught_in ?lec. ?lec Vocab:has_Content ?x. ?x rdf:type ?y. ?y rdfs:label '{}'. }}",
+    "6":"SELECT ?credits WHERE { ?course ex:course_number {} ; ex:has_credits ?credits . }",
+    "7":"select ?url WHERE { ?s ex:course_number {}. ?s ex:course_subject {}. ?s rdfs:seeAlso ?url. }",
+    "8":"select ?content WHERE { ?s ex:course_number {}. ?s ex:course_subject {}. ?lec ex:belongs_to ?s. ?lec ex:lecture_number {}. ?lec ex:has_Content ?content. }",
+    "9":"SELECT DISTINCT ?readingstuff WHERE { ?s ex:course_name {}. ?topic ex:belongs_to ?s. ?topic ex:topic_name {}. ?topic ex:taught_in ?lec. ?lec ex:has_Content ?readingstuff. }",
+    "10":"select ?topicname WHERE { ?s ex:course_number {}. ?topic ex:belongs_to ?s. ?topic ex:topic_name ?topicname }",
+    "11":"select  ?grade WHERE { ?s ex:student_name ?name. ?name ex:firstName {}. ?name ex:lastName {}. ?s ex:completed_courses ?scourses. ?scourses ex:course ?course. ?course ex:course_number {}. ?scourses ex:grade ?grade. }",
+    "12":"select DISTINCT ?firstname ?lastname WHERE { ?s rdf:type vivo:Student. ?s ex:student_name ?name. ?name ex:firstName ?firstname. ?name ex:lastName ?lastname. ?s ex:completed_courses ?scourses. ?scourses ex:course ?course. ?course ex:course_subject {}. ?course ex:course_number {}. } ",
+    "13":"select DISTINCT ?id ?coursecode ?coursenumber ?coursename ?grade ?retook WHERE { ?s rdf:type vivo:Student. ?s ex:student_name ?name. ?name ex:firstName {}. ?name ex:lastName {}. ?s ex:student_id ?id . ?s ex:completed_courses ?scourses. ?scourses ex:course ?course. ?course ex:course_subject ?coursecode. ?course ex:course_number ?coursenumber. ?course ex:course_name ?coursename. ?scourses ex:grade ?grade. ?scourses ex:retookCourse ?retook. }"
+}
