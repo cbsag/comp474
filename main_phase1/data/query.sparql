@@ -1,0 +1,79 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+
+
+# 1) List all courses offered by [university]
+SELECT ?course
+SELECT ?courses
+WHERE {
+  		?uname ex:name "Concordia University".
+  		?course ex:belongs_to ?uiversityname;
+        	ex:course_name ?courses.
+}
+
+#2. In which courses is [topic] discussed?
+
+SELECT ?coursename
+WHERE{
+  		?topic ex:topic_name "AI in Agents".
+  		?topic ex:belongs_to ?course.
+  		?course ex:course_name ?coursename
+    }
+
+
+#3. Which [topics] are covered in [course] during [lecture number]?
+
+SELECT ?topic 
+
+WHERE {
+  ?course ex:course_name "Intelligent Systems".
+  ?lecture ex:belongs_to ?course.
+  ?lecture ex:lecture_number "4".
+  ?topic ex:taught_in ?lecture.
+}
+
+
+#4. List all [courses] offered by [university] within the [subject] (e.g., “COMP”, “SOEN”).
+SELECT ?course
+
+WHERE {
+  ?uname ex:name "Concordia University".
+  ?course ex:belongs_to ?uname.
+  ?course ex:course_subject ?subject.
+  FILTER(?subject="COMP").
+
+}
+
+#5. What [materials] (slides, readings) are recommended for [topic] in [course] [number]?
+
+You have it
+
+
+#6. How many credits is [course] [number] worth?
+
+SELECT ?credits
+
+WHERE {
+  ?course ex:course_number "6751" ;
+  	ex:has_credits ?credits .
+
+}
+
+
+#7. For [course] [number], what additional resources (links to web pages) are available?
+
+#8. Detail the content (slides, worksheets, readings) available for [lecture number] in [course] [number].
+
+#9. What reading materials are recommended for studying [topic] in [course]?
+
+#10. What competencies [topics] does a student gain after completing [course] [number]?
+
+#11. What grades did [student] achieve in [course] [number]?
+
+#12. Which [students] have completed [course] [number]?
+
+#13. Print a transcript for a [student], listing all the course taken with their grades
