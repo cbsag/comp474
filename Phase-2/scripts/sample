@@ -1,0 +1,104 @@
+- intent: list_courses
+  examples: |
+    - List all the courses offered by [Concordia University](university)
+    - List all the courses offered by [Concordia University](university) within [COMP](subject)
+    - What are the courses offered by [COMP](subject) in [Concordia University](university)
+    - What are the courses offered by [Concordia University](university)
+    - What courses are availabe at [Concordia University](university)
+    - What courses are availabe for [COMP](subject) in [Concordia University](university)
+    - List all courses offered by [Concordia University](university)
+    - List all courses offered by [Concordia University](university) within [COMP](subject)
+
+
+- intent: info_topics
+  examples: |
+    - In which courses is [Knowledge Graph](topic) discussed?
+    - What courses covers the topic [Knowledge Graph](topic)?
+    - Whate are the courses that talks about [Knowledge Graph](topic)?
+    - Which courses covers [Knowledge Graph](topic)?
+    - List all the courses that covers [Knowledge Graph](topic)
+
+
+- intent: info_topics
+  examples: |
+    - In which courses is [Knowledge Graph](topic) discussed?
+    - What courses covers the topic [Knowledge Graph](topic)?
+    - Whate are the courses that talks about [Knowledge Graph](topic)?
+    - Which courses covers [Knowledge Graph](topic)?
+    - List all the courses that covers [Knowledge Graph](topic)
+    - Which topics are covered in [COMP6741](course) during [lecture 1](lecture)?
+    - Which topics are covered in [Intelligent Systems](course) during [lecture #1](lecture)?
+    - Which topics are covered in [Intelligent Systems](course) during [#1](lecture)?
+    - Which topics are covered in [Intelligent Systems](course) during [1st Lecture](lecture)?
+    - What are the topics covers in [Intelligent Systems](course) in the lecture [#1](lecture)?
+    - List the topics covered in [Intelligent Systems](course) in lecture [#1](lecture)?
+
+
+- intent: info_content
+  examples: |
+    - What [slides](materials) are recommended for [Knowledge Graph](topic) in [COMP](course) [6741](number)?
+    - What [web pages](materials) are recommended for [AI in Agents](topic) in [COMP](course) [474](number)?
+    - What [Worksheets](materials) are recommended for [AI in Agents](topic) in [COMP](course) [474](number)?
+    - Detail the content available for [#1](lecture) in [COMP](course) [474](number).
+    - Detail the content available for [lecture 1](lecture) in [SOEN](course)[5622](number).
+    - What are the content available for [1](lecture) in [MECH](course)[7741](number).
+    - What type of contents are available for [lecture #1](lecture) in [STAT](course) [1234](number).
+
+
+
+
+ # print(len(entities))
+        # print(current_intent)
+        # if current_intent == "info_courses":
+        #     # print("here")
+        #     nextIndex=0
+        #     result=handle_course(entities)
+        #     op=result
+        #     num=len(result)
+        #     courses=result
+        #     if len(result) >10:
+        #         op=result[0:offset+nextIndex]
+        #         nextIndex=offset+nextIndex
+
+        #     message=""
+        #     for index,i in enumerate(op):
+        #         item=op[index]
+        #         message+=str(index+1)+". "+item["coursecode"]["value"]+item["coursenumber"]["value"]+" "+item["courses"]["value"]+"\n"
+        #     if len(entities)==1:
+        #             dispatcher.utter_message(
+        #                 template="utter_course",
+        #                 num=num,
+        #                 uni=entities[0]["value"],
+        #                 first10="\n"+message
+        #             )   
+        # return []
+
+
+SELECT ?tname (COUNT(?tname) as ?count)  ?ccode ?cnum ?cname ?event WHERE {
+ ?course Vocab:course_name ?cname; Vocab:course_subject ?ccode; Vocab:course_number ?cnum. ?lec Vocab:belongs_to ?course. ?topic Vocab:taught_in ?lec;Vocab:topic_name ?tname;Vocab:provenance ?content. ?content a ?something. ?something rdfs:label ?labels.BIND(IF(?labels = "lab content", "LAB", "LECTURE") AS ?event) FILTER(?tname = "Concordia University")} GROUP BY ?ccode ?cnum ?cname ?event ?tname
+
+ORDER BY DESC(?count)
+
+
+SELECT ?tname (COUNT(?tname) as ?count)  ?ccode ?cnum ?cname ?event ?lnum WHERE {
+ ?course Vocab:course_name ?cname; Vocab:course_subject ?ccode; Vocab:course_number ?cnum. ?lec Vocab:belongs_to ?course; Vocab:lecture_number ?lnum. ?topic Vocab:taught_in ?lec;Vocab:topic_name ?tname;Vocab:provenance ?content. ?content a ?something. ?something rdfs:label ?labels.BIND(IF(?labels = "lab content", "LAB", "LECTURE") AS ?event)  FILTER(lcase(str(?tname)) = "communication")} GROUP BY ?ccode ?cnum ?cname ?event ?tname ?lnum
+
+ORDER BY DESC(?count)
+
+
+
+lecture_content/COMP474_6741/lab0.pdf
+lecture_content/COMP474_6741/lab1.pdf
+lecture_content/COMP474_6741/lab10.pdf
+lecture_content/COMP474_6741/lab11.pdf
+lecture_content/COMP474_6741/lab2.pdf
+lecture_content/COMP474_6741/lab3.pdf
+lecture_content/COMP474_6741/lab4.pdf
+lecture_content/COMP474_6741/lab5.pdf
+lecture_content/COMP474_6741/lab6.pdf
+lecture_content/COMP474_6741/lab7.pdf
+lecture_content/COMP474_6741/lab8.pdf
+lecture_content/COMP474_6741/lab9.pdf
+
+
+select ?topics ?dblink ?wikilink  WHERE {{ ?s Vocab:course_number ?cnum;Vocab:course_subject ?ccode .?lec Vocab:belongs_to ?s; Vocab:has_Content ?content; Vocab:lecture_number ?lnum. ?content rdf:type ?something. ?something rdfs:label ?event. ?topic Vocab:taught_in ?lec. ?topic Vocab:provenance ?content; Vocab:topic_name ?topics. OPTIONAL{?topic Vocab:dbpedia_Link ?dblink } OPTIONAL{?topic Vocab:wikidata_Link ?wikilink } FILTER (lcase(str(?cnum)) = '{}') FILTER (lcase(str(?ccode)) = '{}') FILTER (lcase(str(?lnum)) = '{}' ) {} }}

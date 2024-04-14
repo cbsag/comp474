@@ -1,0 +1,12 @@
+
+.DS_Store
+.DS_Store
+*.ttl
+/Phase-2/lecture_content
+/Phase-2/scripts/__pycache__
+/Phase-2/scripts/rasa/.rasa
+/Phase-2/scripts/rasa/actions/__pycache__
+Phase-2/scripts/rasa/actions/__init__.py
+.DS_Store
+.DS_Store
+/Phase-2/scripts/rasa/models

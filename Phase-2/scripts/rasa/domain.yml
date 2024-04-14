@@ -1,0 +1,125 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - info_courses
+  - info_topics
+  - info_content
+  - print_next_offsets
+  - info_student
+
+entities:
+  - university
+  - subject
+  - course
+  - number
+  - topic
+  - lecture
+  - count
+  - materials
+
+slots:
+  university:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: university
+  subject:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: subject
+  course:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: course
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_course:
+  - text: "There are {num} courses offered at {uni}. Here are first 10 {first10}\n"
+
+  utter_course_subject:
+  - text: "There are {num} courses offered at {uni} within the Subject {subject}. Here are first 10 {first10}\n"
+  utter_five:
+  - text: "here are next five"
+
+  utter_next_offset:
+  - text: "Here are the next {num} courses {next}\n"
+
+  utter_topic:
+  - text: "The courses that covers the topic {topic} are\n{courses}"
+  utter_topics:
+  - text: "The topics covered in lecture {lecture} of course {course} are\n{topic}"
+
+  utter_content:
+  - text: "The {materials} recommended for {topic} inc {course} are {lists}"
+
+  utter_credit:
+  - text: "The course {course} has {credit} credits."
+
+  utter_add_res:
+  - text: "The additonal resource for {course} are {res}"
+  
+  utter_course_types:
+  - text: "There are {types} available for lecture {lecture} in course {course}"
+
+  utter_reading_materials:
+  - text: "The recommend materials for studying the topic {topics} in {course} course are\n {materials}"
+  utter_compentencies:
+  #q10 What competencies [topics] does a student gain after completing [course] [number]?
+  - text: "The compentencies a student gains after completing course {course} are\n{topics}."  
+  utter_studentgrade:
+  #q11 What grades did [student] achieve in [course] [number]?
+  - text : "The student {student} achieved {grades} in course {course}. {misc}"
+
+  utter_lstofstudents:
+  #q12 Which [students] have completed [course] [number]?
+  - text : "The list of students who completed the course {course} is:\n{students}"
+  utter_transcript:
+#q13 Print a transcript for a [student], listing all the course taken with their grades.
+  - text : "The Transcript for the student {student} is:\n SNo. \tid\tCOURSE CODE\tCOURSE NUMBER\tCOURSE NAME\t\t\tRETOOK COURSE\tGRADE\n {table}"
+  utter_description:
+  #q14 What is the <course> about?
+  - text: "The description of the course {course} is {description}"
+  utter_courseevent:
+#q15 Which topics are covered in <course event>?
+  - text: "The topics covered in {event} #{number} of course {course} is:\n{topics}"
+actions:
+  - action_course
+  - action_next_offsets
+  - action_info_topics
+  - action_info_contents
+  - action_info_students
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

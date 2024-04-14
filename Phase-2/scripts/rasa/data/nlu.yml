@@ -1,0 +1,203 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+   
+   
+- intent: info_courses
+  examples: |
+    - List all the courses offered by [Concordia University](university)
+    - List all the courses offered by [Concordia University](university) within [COMP](subject)
+    - What are the courses offered by [COMP](subject) in [Concordia University](university)?
+    - What are the courses offered by [Concordia University](university)
+    - What courses are availabe at [Concordia University](university)
+    - What courses are availabe for [COMP](subject) in [Concordia University](university)
+    - List all courses offered by [Concordia University](university)
+    - List all courses offered by [Concordia University](university) within [COMP](subject)
+    - How many credits is [COMP6741](course) worth?
+    - How many credits is [SOEN 474](course) worth?
+    - What is the credit for course [COMP6741](course)?
+    - What is the credit for course [MECH 5432](course)?
+    - How many credits is [Intelligent Systems](course) worth?
+    - How many credits is [intelligent systems](course) worth?
+    - What is the credit for course [distributed system design](course)?
+    - What is the credit for course [Distributed Systems](course)?
+    - What is the [COMP6741](course) about?
+    - What is the [SOEN 5541](course) about?
+    - What is the [intelligent systems](course) course content?
+    - Can you explain what the [Distributed System Design](course) covers?
+    - I'm interested in learning more about the [COMP 6741](course) course. What's it about?
+    - Could you provide information on the [CHEM5241](course) course?
+    - What does the [HIS474](course) course involve?
+  
+- intent: print_next_offsets
+  examples: |
+    - print next [five](count)
+    - print next [5](count)
+    - show me more
+    - display more
+    - display next offsets
+    - display next [five](count)
+
+
+
+- intent: info_topics
+  examples: |
+    - In which courses is [Knowledge Graph](topic) discussed?
+    - What courses covers the topic [internet](topic)?
+    - What courses covers the topic [AI in Agents](topic)?
+    - Whate are the courses that talks about [machine learning](topic)?
+    - Which courses covers [RDFS](topic)?
+    - List all the courses that covers [Resource Description Framework](topic)
+    - Which topics are covered in [COMP6741](course) during lecture[1](lecture)?
+    - Which topics are covered in [COMP6741](course) during [1](lecture)?
+    - Which topics are covered in [Intelligent Systems](course) during lecture [#1](lecture)?
+    - Which topics are covered in [intelligent systems](course) during [#1](lecture)?
+    - Which topics are covered in [Distributed Systems Design](course) during [1st] lecture(lecture)?
+    - What are the topics covers in [distributed systems design](course) in the lecture [#1](lecture)?
+    - List the topics covered in [COMP 6541](course) in lecture [#1](lecture)?
+    - What competencies does a student gain after completing [COMP 6741](course)?
+    - What competencies does a student gain after completing [COMP474](course)?
+    - What competencies does a student gain after completing [intelligent systems](course)?
+    - What competencies does a student gain after completing [Distributed System Design](course)?
+    - What are the skills acquired by a student after completing [COMP474](course)?
+    - What are the skills acquired by a student after completing [COMP 6741](course)?
+    - What are the skills acquired by a student after completing [Distributed System Design](course)?
+    - Which topics are covered in [Lab](event)[2](number) of [COMP6741](course) ?
+    - Which topics are covered in [Lecture](event) [10](number) of [SOEN 474](course) 
+    - What topics are included in [lab](event)[#1](number)  of [COMP 5541](course) ?
+    - Can you provide an overview of the topics covered in [lab](event) [#2](number) of [Intelligent Systems](course)?
+    - I'm curious about the topics discussed in [Lecture](event) of [Intelligent Systems](course). Can you elaborate?
+    - Please tell me which subjects are addressed in [Lab](event)[#2](number) of [distributed systems design](course) .
+    - What topics should I expect to learn in [lecture](event) [2](number) of [HIS234](course)?
+
+- intent: info_content
+  examples: |
+    - What [slides](materials) are recommended for [Knowledge Graph](topic) in [COMP6741](course)?
+    - What [web pages](materials) are recommended for [AI in Agents](topic) in [COMP 6741](course)?
+    - What [Worksheets](materials) are recommended for [AI in Agents](topic) in [Intelligent Systems](course)?
+    - What [Worksheets](materials) are recommended for [AI in Agents](topic) in [distributed system design](course)?
+    - Detail the content available for [#1](lecture) in [COMP 474](course).
+    - Detail the content available for lecture [1](lecture) in [SOEN5622](number).
+    - What are the content available for [1](lecture) in [intelligent systems](number).
+    - What type of contents are available for lecture [#1](lecture) in [Distributed Systems](course).
+    - For [COMP6741](course), what additional resources are available?
+    - For [SOEN 5541](course), what additional resources are available?
+    - What are the additional resources available for [Intelligent systems](course)?
+    - What additional resources available for [COMP 6741](course)?
+    - What reading materials are recommended for studying [Knowldge Graph](topic) in [Intelligent Systems](course)?
+    - What reading materials are recommended for studying [Network Topology](topic) in [Distributed System Design](course)?
+    - What reading materials are recommended for studying [ai](topic) in [COMP6321](course)?
+    - What reading materials are recommended for studying [machine learning](topic) in [COMP 6741](course)?
+
+- intent: info_student
+  examples: |
+    - What grades did [Ganesh Chandrasekar](student) achieve in [COMP6541](course)?
+    - What grades did [Harikrishnan Gurushankar Saisudha](student) achieve in [COMP 6231](course)?
+    - What grades did [Ganesh Chandrasekar](student) achieve in [Intelligent Systems](course)?
+    - What grades did [Harikrishnan Gurushankar Saisudha](student) achieve in [distributed system design](course)?
+    - Which students have completed [COMP6541](course)?
+    - Which students have completed [COMP 6741](course)?
+    - Can you please inform me about the students who has completed [COMP 6741](course)?
+    - I'm interested in knowing which students completed [PHYS205](course).
+    - Could you provide information about which students have completed [intelligent systems](course)?
+    - Please tell me which [David](student) completed [CHEM](course) [301](number).
+    - Do you know which [Alex](student) completed [HIST](course) [101](number)?
+    - What grades did [40261725](student) achieve in [COMP](course) [6541](number)?
+    - What grades did [40256600](student) achieve in [COMP](course) [6231](number)?
+    - Which students have completed [Intelligent Systems](course)?
+    - Which students have completed [distributed systems design](course)?
+    - Print a transcript for a [Ganesh Chandrasekar](student), listing all the course taken with their grades.
+    - Print a transcript for a [Harikrishnan Gurushankar Saisudha](student), listing all the course taken with their grades.
+    - Display a transcript for [40261725](student), including all the courses taken and their respective grades.
+    - Provide a transcript for [40256600](student), detailing all the courses taken and their grades.
+    - Generate a transcript for [Sarah Johnson](student), showing all the courses taken along with their grades.
+    - Show a transcript for [David](student), presenting all the courses taken and their corresponding grades.
+    - Produce a transcript for [40261728](student), outlining all the courses taken and the grades received.

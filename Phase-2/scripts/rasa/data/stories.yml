@@ -1,0 +1,54 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+ 
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: course path
+  steps:
+  - intent: info_courses
+  - action: action_course
+
+- story: display more
+  steps:
+  - intent: print_next_offsets
+  - action: action_next_offsets
+
+- story: topic path
+  steps:
+  - intent: info_topics
+  - action: action_info_topics
+
+
+- story: content path
+  steps:
+  - intent: info_content
+  - action: action_info_contents
+
+- story: student path
+  steps:
+  - intent: info_student
+  - action: action_info_students
