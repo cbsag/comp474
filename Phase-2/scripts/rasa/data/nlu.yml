@@ -19,9 +19,7 @@ nlu:
 
 - intent: goodbye
   examples: |
-    - cu
     - good by
-    - cee you later
     - good night
     - bye
     - goodbye
@@ -30,58 +28,9 @@ nlu:
     - bye bye
     - see you later
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
 
 - intent: bot_challenge
   examples: |
@@ -111,12 +60,23 @@ nlu:
     - What is the credit for course [Distributed Systems](course)?
     - What is the [COMP6741](course) about?
     - What is the [SOEN 5541](course) about?
+    - What is the [mech 214](course) about?
+
     - What is the [intelligent systems](course) course content?
     - Can you explain what the [Distributed System Design](course) covers?
     - I'm interested in learning more about the [COMP 6741](course) course. What's it about?
     - Could you provide information on the [CHEM5241](course) course?
     - What does the [HIS474](course) course involve?
-  
+    - Which course events cover [Deep Learning](topic)?
+    - Which course events cover [Anatomy of a URI](topic)?  
+    - Which course event cover [intelligent systems](topic)?
+    - Which course event cover [intelligent systems](topic)?
+    - Which course events cover [knwoledge base](topic)?  
+    - What events related to [knowledge graphs](topic) are covered in the course?
+    - Can you provide a list of course events that discuss [AI in Agents](topic)?
+    - I'm interested in knowing which course events address [Anatomy of a URI](topic).
+    - Which course sessions include topics on [Deep Learning](topic)?
+    - Could you tell me which course events include discussions on [Anatomy of a URI](topic)?
 - intent: print_next_offsets
   examples: |
     - print next [five](count)
@@ -176,6 +136,7 @@ nlu:
     - What reading materials are recommended for studying [Network Topology](topic) in [Distributed System Design](course)?
     - What reading materials are recommended for studying [ai](topic) in [COMP6321](course)?
     - What reading materials are recommended for studying [machine learning](topic) in [COMP 6741](course)?
+    
 
 - intent: info_student
   examples: |
@@ -201,3 +162,64 @@ nlu:
     - Generate a transcript for [Sarah Johnson](student), showing all the courses taken along with their grades.
     - Show a transcript for [David](student), presenting all the courses taken and their corresponding grades.
     - Produce a transcript for [40261728](student), outlining all the courses taken and the grades received.
+
+
+- lookup: topic
+  examples: |
+    - Artificial Intelligence
+    - Knowledge graph
+    - machine learning
+    - MPI
+    - message passing interface
+    - artificial Intelligence
+    
+  
+- synonym: concordia university
+  examples: |
+    - Concordia University
+    - concordia
+    - cu
+    - CU
+    - Concordia
+
+
+- synonym: COMP6741
+  examples: |
+    - intelligent systems
+    - Intelligent Systems
+    - COMP 6741
+    - comp 6741
+    - Comp6741
+    - Comp 6741
+    - COMP 474
+    - COMP474
+
+- synonym: COMP6231
+  examples: |
+    - Distributed System Design
+    - distributed system design
+    - COMP 6231
+    - comp 6231
+    - Comp6231
+    - Comp 6231
+    - COMP6231
+    - distributed system
+    - Distirbuted Systems
+
+
+- synonym: '40256600'
+  examples: |
+    - Ganesh
+    - Ganesh C
+    - Ganesh chandrasekar
+    - GANESH CHANDRASEKAR
+    - Ganesh Chandrasekar
+
+- synonym: '40261725'
+  examples: |
+    - Harikrishnan Gurushankar Saisudha
+    - HARIKRISHNAN
+    - Harikrishnan G S
+    - Harikrishnan Gurushankar
+    - Hari
+    - Harikrishnan GS

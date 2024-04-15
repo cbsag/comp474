@@ -141,5 +141,5 @@ class ActionStudent(Action):
             self.getTranscript(dispatcher,ent["student"])
         if len(entities) == 2:
             self.getStudentGrades(dispatcher,**ent)
-    
+        dispatcher.utter_message(template="utter_fallback")
         return []

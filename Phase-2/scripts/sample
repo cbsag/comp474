@@ -102,3 +102,6 @@ lecture_content/COMP474_6741/lab9.pdf
 
 
 select ?topics ?dblink ?wikilink  WHERE {{ ?s Vocab:course_number ?cnum;Vocab:course_subject ?ccode .?lec Vocab:belongs_to ?s; Vocab:has_Content ?content; Vocab:lecture_number ?lnum. ?content rdf:type ?something. ?something rdfs:label ?event. ?topic Vocab:taught_in ?lec. ?topic Vocab:provenance ?content; Vocab:topic_name ?topics. OPTIONAL{?topic Vocab:dbpedia_Link ?dblink } OPTIONAL{?topic Vocab:wikidata_Link ?wikilink } FILTER (lcase(str(?cnum)) = '{}') FILTER (lcase(str(?ccode)) = '{}') FILTER (lcase(str(?lnum)) = '{}' ) {} }}
+
+
+SELECT ?tname (COUNT(?tname) as ?count)  ?ccode ?cnum ?cname ?event ?lnum WHERE {{ ?course Vocab:course_name ?cname; Vocab:course_subject ?ccode; Vocab:course_number ?cnum. ?lec Vocab:belongs_to ?course; Vocab:lecture_number ?lnum. ?topic Vocab:taught_in ?lec;Vocab:topic_name ?tname;Vocab:provenance ?content. ?content a ?something. ?something rdfs:label ?labels.BIND(IF(?labels = "lab content", "LAB", "LECTURE") AS ?event)  FILTER(lcase(str(?tname)) = '{}')}} GROUP BY ?ccode ?cnum ?cname ?event ?tname ?lnum ORDER BY DESC(?count)

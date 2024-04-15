@@ -23,7 +23,7 @@ entities:
   - lecture
   - count
   - materials
-
+  - student
 slots:
   university:
     type: text
@@ -45,13 +45,12 @@ slots:
         entity: course
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! How can I help you?" 
 
+  utter_fallback:
+  - text: "I'm sorry, I didn't understand. Can you rephrase your message?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+ 
   utter_did_that_help:
   - text: "Did that help you?"
 
@@ -113,6 +112,9 @@ responses:
   utter_courseevent:
 #q15 Which topics are covered in <course event>?
   - text: "The topics covered in {event} #{number} of course {course} is:\n{topics}"
+  utter_coursetopics:
+#q16 Which course events cover <Topic>?
+  - text: "Course events for {topic} are:\n{topics}"
 actions:
   - action_course
   - action_next_offsets

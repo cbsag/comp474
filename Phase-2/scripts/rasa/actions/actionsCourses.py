@@ -91,6 +91,9 @@ class ActionCoursesAll(Action):
             for index,i in enumerate(courses):
                 item=op[index]
                 message+=str(index+1)+". "+item["coursecode"]["value"]+item["coursenumber"]["value"]+" "+item["courses"]["value"]+"\n"
+        if len(courses) ==0:
+            dispatcher.utter_message(f"No information found for university {uniname}")
+
         dispatcher.utter_message(
             template="utter_course",
             num=num,
@@ -144,7 +147,10 @@ class ActionCoursesAll(Action):
             query=queriesList["14"].format(course.lower())
         res=Query().sendQuery(query=query)
         if len(res)==0:
-            dispatcher.utter_message(f"No decstiption record found for course {course}")
+            dispatcher.utter_message(f"No description record found for course {course}")
+            return
+        elif res[0]["desc"]["value"].strip()=="":
+            dispatcher.utter_message(f"No description record found for course {course}")
             return
         dispatcher.utter_message(
             template="utter_description",
@@ -153,12 +159,27 @@ class ActionCoursesAll(Action):
 
         )
 
+    def course_events(self,dispatcher,topic):
+        query=queriesList["16"].format(topic.lower())
+        res=Query().sendQuery(query=query)
+        if len(res)==0:
+            dispatcher.utter_message(f"Course event information not available for {topic}")
+            return
+        message=""
+        for index,i in enumerate(res):
+            message+=str(index+1)+". count: "+i["count"]["value"]+" CNAME: "+i["cname"]["value"]+" EVENT: "+i["event"]["value"]+" LEC NO: "+i["lnum"]["value"]+"\n"
 
+        dispatcher.utter_message(
+            template="utter_coursetopics",
+            topic=topic,
+            topics=message
+        )
+        
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain) :
-        print("here")
+        print("here3")
         global nextIndex
         global courses
         global offset
@@ -177,10 +198,12 @@ class ActionCoursesAll(Action):
             self.course_credits(dispatcher,entities[0]["value"])
         elif len(entities)==1 and entities[0]["entity"]=="course" :
             self.course_desc(dispatcher,entities[0]["value"])
+        elif len(entities)==1 and entities[0]["entity"]=="topic":
+            self.course_events(dispatcher,entities[0]["value"])
         elif len(entities)==2:
             print("here2")
             self.sub_courses(dispatcher,**ent)
-            
+        dispatcher.utter_message(template="utter_fallback")
 
 class ActionPrintOffset(Action):
 
@@ -210,15 +233,16 @@ class ActionPrintOffset(Action):
         result=[]
         off=offset
         indexVal=nextIndex
-        print(len(courses),"courses")
+        print(len(courses),"courses",nextIndex)
         if len(entities)>0:
             newOff=nextIndex+int(entities[0]["value"])
-            
+            print(newOff,"off")
             if newOff >= len(courses):
-                newOff=len(result)
-            
-            off=newOff-int(entities[0]["value"])
+                newOff=len(courses)
+            print(nextIndex,"next")
+            off=newOff-nextIndex
             result=courses[nextIndex:newOff]
+            print(result)
             nextIndex=newOff
         else:
             print("nextIndex",nextIndex,offset)

@@ -23,7 +23,8 @@ class ActionContent(Action):
             query=queriesList["5"].format(cnum.lower(),cname.lower(),topic.lower(),materials.lower())
             print(query)
         else:
-            query=queriesList["5"].format()
+            #print(queriesList["5A"])
+            query=queriesList["5A"].format(course.lower(),topic.lower(),materials.lower())
 
         res=Query().sendQuery(query=query)
         message=""
@@ -144,7 +145,7 @@ class ActionContent(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain) :
-        print("here")
+        print("here2")
         entities= tracker.latest_message.get('entities',[])
         ent={}
         for i in entities:
@@ -162,6 +163,6 @@ class ActionContent(Action):
         if len(entities)==3:
             self.recommend_courses(dispatcher, **ent)
             return []
-    
 
+        dispatcher.utter_message(template="utter_fallback")
         return []

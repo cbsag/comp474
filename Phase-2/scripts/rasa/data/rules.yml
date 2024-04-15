@@ -16,3 +16,8 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+  
+- rule: Handle uncertain predictions
+  steps:
+  - intent: nlu_fallback
+  - action: utter_fallback

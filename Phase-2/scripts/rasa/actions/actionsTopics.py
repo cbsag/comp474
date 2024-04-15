@@ -83,7 +83,7 @@ class ActionTopics(Action):
         query=""
         res=None
         
-        if str(course).isalnum() and str(course.replace(" ","")[4:]).isdigit():
+        if str(course.replace(" ","")).isalnum() and str(course.replace(" ","")[4:]).isdigit():
             course=course.replace(" ","")
             cname=course[0:4]
             cnum=course[4:]
@@ -95,7 +95,7 @@ class ActionTopics(Action):
         res=Query().sendQuery(query=query)
         if len(res)==0:
             dispatcher.utter_message(
-                f"The competenceies list for {course} is not available"
+                f"The competencies for {course} is not available"
 
             )
             return
@@ -192,5 +192,5 @@ class ActionTopics(Action):
                 course=entities[1]['value']
                 lecture=entities[0]['value']
             response=self.find_lecture_topics(dispatcher,course,lecture)
-
+        dispatcher.utter_message(template="utter_fallback")
         return []
